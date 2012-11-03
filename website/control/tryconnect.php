@@ -1,19 +1,22 @@
 <?php
 
-include "../data/Connection.php";
+
+include "../data/ArticleDAO.php";
 
 class tryconnect{
 	
-	private $connection;
+	private $aArticleDAO;
+	private $aArticle;
 	
-	function tryConnect(){
-		$dbAccess=new testDAO();
-		$connection=$dbAccess->connect();
-		if($connection!=null){
-			return "it's all right";
-		}else{
-			return "BIG FAIL";
-		}
+	public function getArticle(){
+		return $this->aArticle;
+	}
+	
+	public function print_Article(){
+		$this->aArticleDAO=new ArticleDAO();
+		
+		$this->aArticle=$this->aArticleDAO->getById(2);
+	
 	}
 	
 }

@@ -8,13 +8,21 @@
 
 <?php include "leftIndex.php"?>
 
-
+<?php 
+			include "../control/tryconnect.php";
+			$firstArticle=new tryconnect();
+			$firstArticle->print_Article();
+		?>
+										<div class="box">
+						<h2>
+							<?php  echo $firstArticle->getArticle()->News_title;?>
+						</h2>
+						<img src="images/pic01.jpg" width="150" height="150" alt="" class="left" />
+						<p>
+						<?php  echo $firstArticle->getArticle()->News_content ;?>
+							
 	
-					<div class="box">
-					<?php 
-						include "../control/tryconnect.php";
-					?>
-				
+									</p>
 					</div>
 
 		
