@@ -1,8 +1,6 @@
 <?php
 
-
-
-include "../data/testDAO.php";
+include "data/Connection.php";
 
 class tryconnect{
 	

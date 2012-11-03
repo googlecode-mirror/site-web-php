@@ -28,7 +28,7 @@ Released   : 20120723
 			<div id="header">
 				<div id="logo">
 					<h1>
-						<a href="#">Programaniak</a>
+						<a href="index.php">Programaniak</a>
 					</h1>
 				</div>
 				<div id="search">
@@ -47,10 +47,10 @@ Released   : 20120723
 							<a href="#">Experts</a>
 						</li>
 						<li>
-							<a href="#">Débutants</a>
+							<a href="#">DÃ©butants</a>
 						</li>
 						<li>
-							<a href="#">Pour se détendre ..</a>
+							<a href="#">Pour se dÃ©tendre ..</a>
 						</li>
 
 						<li class="last">

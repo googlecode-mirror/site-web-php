@@ -1,7 +1,7 @@
 <?php
 
 
-class testDAO{
+class connection{
 	
 	function connect(){
 		$conn=null;

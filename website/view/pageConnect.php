@@ -1,25 +1,21 @@
-<?php
+<?php include "header.php" ?>
 
-include "../control/tryconnect.php";
+			<div id="banner">
+				<div class="captions">
+					<h2>C là qu'on parle aussi bien des Pythons que des Perl</h2>
+				</div>
+				<img src="images/banner.jpg" alt="" />
+			</div>
+			<div id="main">
+<?php include "leftIndex.php"?>
 
-echo '<!DOCTYPE html>
-<html>
- 
-
-	<head>
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>
-			Connection
-		</title>
-		<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="style/style.css" />
-	</head>
-	';
- 
-$conn= new tryconnect();
-
-echo $conn->tryConnect();
-
-echo "</html>";
+				<div id="content">
+					<div class="box">
+					<?php 
+					
+					?>
+				
+					</div>
+					<div class="box">
+		
+<?php include "bottom.php"?>
