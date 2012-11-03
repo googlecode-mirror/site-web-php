@@ -1,15 +1,13 @@
-<?php include "header.php" ?>
 
-			<div id="banner">
-				<div class="captions">
-					<h2>C là qu'on parle aussi bien des Pythons que des Perl</h2>
-				</div>
-				<img src="images/banner.jpg" alt="" />
-			</div>
-			<div id="main">
+<?php $title="index";
+		$keywords="Computer science, Architecture, Java, Linux";
+		$description="Website of computer sciences news and articles" ?>
+<?php include "header.php";
+		$page_title="C là qu'on parle aussi bien des Pythons que des Perl"; ?>
+
+		
 <?php include "leftIndex.php"?>
-
-				<div id="content">
+				
 					<div class="box">
 						<h2>
 							En cours de réalisation..
@@ -24,17 +22,5 @@
 							provided you keep the footer credits intact. Aside from that, have fun with it :)
 						</p>
 					</div>
-					<div class="box">
-						<h3>
-							Tempus eget feugiat nisl
-						</h3>
-						<p>
-							Tristique feugiat natoque gravida quisque odio. Ipsum mus vitae suspendisse sit mattis curabitur elit. 
-							Eleifend penatibus a curabitur nulla. Ultricies praesent rutrum justo. Congue vulputate lacinia ornare 
-							tortor purus dolor eleifend. Semper dui tincidunt id dictum quam. Phasellus tristique libero tristique.
-							Eleifend penatibus a curabitur nulla. Ultricies praesent rutrum justo. Congue vulputate lacinia ornare 
-							tortor purus dolor eleifend. Semper dui tincidunt id dictum quam. Phasellus tristique libero tristique.
-							Eleifend penatibus a curabitur nulla. Ultricies praesent rutrum justo. Congue vulputate lacinia ornare 
-							tortor purus dolor eleifend. Semper dui tincidunt id dictum quam. Phasellus tristique libero tristique.
-						</p>
+
 <?php include "bottom.php"?>

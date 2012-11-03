@@ -10,13 +10,15 @@ Description: A two-column, fixed-width design with a bright color scheme.
 Version    : 1.0
 Released   : 20120723
 -->
+
+	
 <html >
 	<head>
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
+		<meta name="keywords" content="<?php echo $keywords ?> " />
+		<meta name="description" content="<?php echo $description ?> " />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<title>
-			Programmaniaks
+			<?php echo $title ?>
 		</title>
 		<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" type="text/css" href="style/style.css" />

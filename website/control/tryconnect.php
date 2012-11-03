@@ -1,6 +1,6 @@
 <?php
 
-include "data/Connection.php";
+include "../data/Connection.php";
 
 class tryconnect{
 	

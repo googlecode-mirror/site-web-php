@@ -1,9 +1,18 @@
-	<div id="sidebar">
+	<div id="banner">
+				<div class="captions">
+					<h2><?php echo $page_title?></h2>
+				</div>
+				<img src="images/banner.jpg" alt="" />
+			</div>
+			<div id="main">
+
+<div id="sidebar">
 					<div class="box">
 						<h3>
 							Augue orci
 						</h3>
 						<div class="dateList">
+						
 							<ul class="linkedList dateList">
 								<li class="first">
 									<span class="date">Jul 23</span> <a href="#">Ante sed fringilla</a>
@@ -50,3 +59,4 @@
 						</ul>
 					</div>
 				</div>
+				<div id="content">
