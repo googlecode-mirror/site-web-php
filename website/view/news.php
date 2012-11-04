@@ -22,5 +22,21 @@
 							<?php echo $article->News_content; ?>
 						</p>
 					</div>
+					<div class="box">
+					<h3>Commentaires</h3>
+					<?php $listComment=$object->getListComment($id);
+						if($listComment != false){
+							foreach($listComment as $comment){
+								echo "<div class='comment'><h4>".$comment->comment_user_name."</h4>"
+										.$comment->comment_content."</div>";
+							}
+						}else{
+							?>
+							il n'y a pas de commentaires actuellement
+							<?php
+						}
+					
+					?>
+					</div>
 
 <?php include "bottom.php"?>

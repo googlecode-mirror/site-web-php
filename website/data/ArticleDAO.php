@@ -1,6 +1,6 @@
 <?php
 
-include "Connection.php";
+include_once  "Connection.php";
 include "../business/Article.php";
 
 class ArticleDAO{

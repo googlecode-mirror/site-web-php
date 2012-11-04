@@ -2,29 +2,35 @@
 
 
 include "../data/ArticleDAO.php";
+include "../data/CommentDAO.php";
 
 class tryconnect{
 	
 	private $aArticleDAO;
+	private $aCommentDAO;
 	private $aArticle;
 	private $aListArticle;
+	private $aListComment;
+	
+	public function __construct(){
+		$this->aArticleDAO=new ArticleDAO();
+		$this->aCommentDAO=new CommentDAO();
+	}
 	
 	public function getArticle(){
 		return $this->aArticle;
 	}
 	
 	public function print_Article($var){
-		$this->aArticleDAO=new ArticleDAO();
-		
-		//$this->aArticle=$this->aArticleDAO->getById(2);
-		
 		return $this->aArticleDAO->getByCategory($var);
 	}
 	
 	public function getArticleById($id) {
-		$this->aArticleDAO=new ArticleDAO();
 		return $this->aArticleDAO->getById($id);
 	}
 	
+	public function getListComment($new){
+		return $this->aCommentDAO->getByNews($new);
+	}
 }
 ?>
