@@ -43,7 +43,7 @@ Released   : 20120723
 				<div id="nav">
 					<ul>
 						<li class="first">
-							<a href="pageConnect.php">Articles</a>
+							<a href="listArticle.php">Articles</a>
 						</li>
 						<li>
 							<a href="#">Experts</a>
