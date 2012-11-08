@@ -1,7 +1,7 @@
 <?php
 
-include_once  "Connection.php";
-include "../business/Article.php";
+include_once  "data/Connection.php";
+include "business/Article.php";
 
 class ArticleDAO{
 	private $con;
@@ -32,6 +32,30 @@ class ArticleDAO{
 		
 	}
 	
+	public function getFiveLast(){
+		$resultats=$this->con->query("SELECT max(News_id) from news"); // on va chercher tous les membres de la table qu'on trie par ordre croissant
+		$resultats->setFetchMode(PDO::FETCH_NUM); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
+		$article = $resultats->fetch();
+		$min=$article[0]-5;
+		if($min < 0){
+			$min=0;
+		}
+		try {
+			$resultats=$this->con->query("SELECT * from news where News_id >".$min); // on va chercher tous les membres de la table qu'on trie par ordre croissant
+			$resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
+			$inc=0;
+				
+			while($article = $resultats->fetch()){
+				$listArticle[$inc]=$article;
+				$inc++;
+			}
+			$resultats->closeCursor();
+			return $listArticle;
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+		}
+	}
 	
 	public function getByCategory($pId){
 		try {

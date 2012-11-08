@@ -7,7 +7,7 @@
 
 		
 <?php include "leftIndex.php"?>
-<?php include "../control/tryconnect.php"?>
+<?php include_once "control/ArticleControls.php"?>
 				
 					<div class="box">
 						<h2>
@@ -16,7 +16,7 @@
 						<img src="images/News.jpg" width="150" height="150" alt="" class="left" />
 						<p>
 							<?php 
-								$object=new tryconnect();
+								$object=new ArticleControls();
 								$list=$object->print_Article(2);
 								echo "<ul>";
 								foreach($list as $article){
@@ -25,6 +25,8 @@
 								}
 								
 								echo "<li></li></ul>";
+								
+							
 							?>
 						</p>
 					</div>

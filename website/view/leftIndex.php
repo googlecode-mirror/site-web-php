@@ -5,7 +5,7 @@
 				<img src="images/banner.jpg" alt="" />
 			</div>
 			<div id="main">
-
+<?php include "control/ArticleControls.php"?>
 <div id="sidebar">
 					<div class="box">
 						<h3>
@@ -40,23 +40,20 @@
 						<h3>
 							Bienvenue chez les geeks !
 						</h3>
-						<p>
+							<?php 
+								$object=new ArticleControls();
+								$list=$object->getFiveLast();
+								echo '<ul class="linkedList">';
+								foreach($list as $article){
+									
+									echo '<li class="first"><a href="news.php?art_id='.$article->News_id.'">'.$article->News_title.'</a></li>';
+								}
+								
+								echo "<li></li></ul>";
+								
 							
-						</p>
-						<ul class="linkedList">
-							<li class="first">
-								<a href="#">Luctus curae vitae</a>
-							</li>
-							<li>
-								<a href="#">Duis justo parturient lectus</a>
-							</li>
-							<li>
-								<a href="#">Nullam fermentum cras sociis</a>
-							</li>
-							<li class="last">
-								<a href="#">Natoque sapien suscipit</a>
-							</li>
-						</ul>
+							?>
+						
 					</div>
 				</div>
 				<div id="content">

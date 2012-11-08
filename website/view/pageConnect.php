@@ -9,8 +9,8 @@
 <?php include "leftIndex.php"?>
 
 <?php 
-			include "../control/tryconnect.php";
-			$firstArticle=new tryconnect();
+			include "control/ArticleControls.php";
+			$firstArticle=new ArticleControls();
 			$firstArticle->print_Article();
 		?>
 										<div class="box">

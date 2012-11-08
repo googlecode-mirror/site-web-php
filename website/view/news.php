@@ -7,10 +7,10 @@
 
 		
 <?php include "leftIndex.php"?>
-<?php include "../control/tryconnect.php"?>
+<?php include "control/ArticleControls.php"?>
 <?php 
 	$id = $_GET["art_id"];
-	$object = new tryconnect();
+	$object = new ArticleControls();
 	$article=$object->getArticleById($id);
 ?>
 					<div class="box">
@@ -39,4 +39,17 @@
 					?>
 					</div>
 
+					<div class="box">
+					<h3>Poster un commentaire:</h3>
+					<form METHOD="POST" action="listener/addComment.php">
+						<input type="hidden" name="id" value="<?php echo $id; ?>" />
+						<input type="hidden" name="ip" value="<?php echo $object->get_ip(); ?>" />
+						Nom:	<input type="text" name="name"></input>*<br/>
+						Titre:	<input type="text" name="title"></input><br/>
+						Votre commentaire:<br/>
+						<textarea  dir="ltr" tabindex="1" style="display:block; width:540px;
+						 height:250px" cols="60" rows="10" name="content"></textarea>
+						<input class="button" type="submit" tabindex="1" accesskey="r" value="Envoie" name="envoieCom">
+					</form>
+					</div>
 <?php include "bottom.php"?>

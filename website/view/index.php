@@ -14,12 +14,9 @@
 						</h2>
 						<img src="images/pic01.jpg" width="150" height="150" alt="" class="left" />
 						<p>
-							This is <strong>Unofficial Channels</strong>, a free, fully standards-compliant CSS template 
-							by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>. The images used in this 
-							template are from <a href="http://fotogrph.com/">Fotogrph</a>. This free template is released 
-							under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attributions 3.0</a> 
-							license, so you are pretty much free to do whatever you want with it (even use it commercially) 
-							provided you keep the footer credits intact. Aside from that, have fun with it :)
+							<?php include_once "control/ArticleControls.php";
+							$controller= new ArticleControls();
+							echo $controller->get_ip();?>
 						</p>
 					</div>
 
