@@ -7,7 +7,7 @@
 
 		
 <?php include "leftIndex.php"?>
-<?php include "control/ArticleControls.php"?>
+<?php include_once "control/ArticleControls.php"?>
 <?php 
 	$id = $_GET["art_id"];
 	$object = new ArticleControls();
@@ -19,7 +19,9 @@
 						</h2>
 						<img src="images/News.jpg" width="150" height="150" alt="" class="left" />
 						<p>
-							<?php echo $article->News_content; ?>
+							<?php echo $article->News_content;?>
+							<br/>
+	
 						</p>
 					</div>
 					<div class="box">

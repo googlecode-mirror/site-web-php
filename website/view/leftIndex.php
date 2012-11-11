@@ -6,18 +6,24 @@
 			</div>
 			<div id="main">
 <?php include "control/ArticleControls.php"?>
+<?php $object=new ArticleControls();?>
 <div id="sidebar">
 					<div class="box">
 						<h3>
-							Augue orci
+							Derniers articles
 						</h3>
 						<div class="dateList">
-						
+						<?php 
+								
+								$list=$object->getFiveLast();?>
 							<ul class="linkedList dateList">
-								<li class="first">
-									<span class="date">Jul 23</span> <a href="#">Ante sed fringilla</a>
-								</li>
-								<li>
+							<?php foreach($list as $article){ 
+								echo '<li class="first"><span class="date">'.$ret=$object->dateReducted($article->News_date).'</span><a href="news.php?art_id='.$article->News_id.'">'.$article->News_title.'</a></li>';
+								
+								?>
+								
+								<?php } ?>
+							<!-- 	<li>
 									<span class="date">Jul 18</span> <a href="#">Turpis dolor risus</a>
 								</li>
 								<li>
@@ -31,7 +37,7 @@
 								</li>
 								<li class="last">
 									<span class="date">Jun 24</span> <a href="#">Arcu phasellus</a>
-								</li>
+								</li>  -->
 							</ul>
 						</div>
 					</div>
@@ -41,7 +47,7 @@
 							Bienvenue chez les geeks !
 						</h3>
 							<?php 
-								$object=new ArticleControls();
+								
 								$list=$object->getFiveLast();
 								echo '<ul class="linkedList">';
 								foreach($list as $article){
