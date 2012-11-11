@@ -4,7 +4,8 @@
 		$description="Website of computer sciences news and articles" ?>
 <?php include "header.php";
 		$page_title="C là qu'on parle aussi bien des Pythons que des Perl"; ?>
-
+		
+<?php include_once 'data/CategoryDAO.php';?>
 		
 <?php include "leftIndex.php"?>
 				
@@ -16,7 +17,11 @@
 						<p>
 							<?php include_once "control/ArticleControls.php";
 							$controller= new ArticleControls();
+							
 							echo $controller->get_ip();?>
+							<?php $dao=new CategoryDAO();
+						
+									var_dump($dao->getByName('news')); ?>
 						</p>
 					</div>
 
