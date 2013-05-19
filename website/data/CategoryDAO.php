@@ -26,8 +26,7 @@ class CategoryDAO{
 	}*/
 	public function getByName($titre){
 		try {
-			var_dump($titre);
-			$resultats=$this->con->query("SELECT * from category where category_name ='".$titre."'"); // on va chercher tous les membres de la table qu'on trie par ordre croissant
+			$resultats=$this->con->query("SELECT * from category where category_name ='".$titre."'"); // on va chercher tous les membres de la table 
 			$resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
 			$article = $resultats->fetch();
 			$resultats->closeCursor();

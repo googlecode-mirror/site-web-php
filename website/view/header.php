@@ -10,7 +10,7 @@ Description: A two-column, fixed-width design with a bright color scheme.
 Version    : 1.0
 Released   : 20120723
 -->
-
+<?php include_once 'control/navigationControls.php';?>
 	
 <html >
 	<head>
@@ -26,6 +26,7 @@ Released   : 20120723
 	<body>
 		<div id="bg1"></div>
 		<div id="bg2"></div>
+		<?php  $catControl= new navigationControls();?>
 		<div id="outer">
 			<div id="header">
 				<div id="logo">
@@ -43,17 +44,36 @@ Released   : 20120723
 				<div id="nav">
 					<ul>
 						<li class="first">
-							<a href="listArticle.php">Articles</a>
+								<?php 
+								$url= $catControl->getLinkCategory("News"); 
+								?>
+				
+							<a href="<?php echo $url ?>">Articles</a>
+							
 						</li>
 						<li>
-					
-							<a href="#">Experts</a>
+						<?php 
+								$url= $catControl->getLinkCategory("experts"); 
+								?>
+				
+							<a href="<?php echo $url ?>">Experts</a>
 						</li>
 						<li>
-							<a href="#">Débutants</a>
+						
+							<?php 
+								$url= $catControl->getLinkCategory("Newbies"); 
+								?>
+				
+							<a href="<?php echo $url ?>">Débutants</a>
 						</li>
 						<li>
-							<a href="#">Pour se détendre ..</a>
+						
+							<?php 
+								$url= $catControl->getLinkCategory("Loisirs"); 
+								?>
+				
+							<a href="<?php echo $url ?>">Pour se détendre ..</a>
+						 
 						</li>
 
 						<li class="last">

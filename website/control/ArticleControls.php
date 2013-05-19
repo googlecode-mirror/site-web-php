@@ -64,7 +64,7 @@ class ArticleControls{
 	public function  dateReducted($pDate){
 		preg_match('/(?P<date>[^.]+) (?P<hour>[^.]+)/', $pDate, $regs);
 		$date=$regs['date'];
-		preg_match('/(?P<year>[^.]+)-(?P<month>[^.]+)-(?P<day>[^.]+)/',
+		preg_match('/(?P<year>[^.]+)-(?P<month>[^.]+)-(?P<day>[^.]+)/',//y a pas idée de se faire du mal comme ca
 		$date , $regs);
 		
 		$retour=$regs['day']." ";

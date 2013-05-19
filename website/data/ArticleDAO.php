@@ -93,7 +93,7 @@ class ArticleDAO{
 				$inc++;
 			}
 			$resultats->closeCursor();
-			return $listArticle;
+			return @ $listArticle;
 		} catch (PDOException $e) {
 			print "Error!: " . $e->getMessage() . "<br/>";
 			die();
