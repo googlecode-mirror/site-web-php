@@ -8,13 +8,22 @@ class ArticleControls{
 	
 	private $aArticleDAO;
 	private $aCommentDAO;
+	private $aCategoryDAO;
 	private $aArticle;
 	private $aListArticle;
 	private $aListComment;
+	private $aListCategory;
 	
 	public function __construct(){
 		$this->aArticleDAO=new ArticleDAO();
 		$this->aCommentDAO=new CommentDAO();
+		$this->aCategoryDAO=new CategoryDAO();
+	}
+	
+	public function getCategories(){
+		
+		return $aListCategory=$this->aCategoryDAO->getAllFetchArray();
+		
 	}
 	
 	public function getArticle(){
@@ -107,6 +116,17 @@ class ArticleControls{
 				break;
 		}
 		return $retour;
+	}
+	
+	public function generateCombobox(){
+		/*<option value="3">Select</option>
+		<option value="0">Open</option>
+		<option value="1">Closed</option>*/
+		$ret="";
+		foreach ($this->getCategories() as  $value) {
+    		$ret=$ret.'<option value="'.$value->category_id.'">'.$value->category_name.'</option>';
+		}
+		return $ret;
 	}
 }
 ?>

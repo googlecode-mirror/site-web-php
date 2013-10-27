@@ -35,6 +35,28 @@ class CategoryDAO{
 			print "Error!: " . $e->getMessage() . "<br/>";
 			die();
 		}
+	}
 	
+	public function getAllFetchArray(){
+		try{
+			$resultats=$this->con->query("SELECT * from category where category_id > 1 "); // on va chercher tous les membres de la table
+			//$resultats->setFetchMode(PDO::FETCH_ASSOC); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
+			//$allCat = $resultats->fetch();
+			$resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
+			$inc=0;
+			
+			while($cat = $resultats->fetch()){
+				$allCat[$inc]=$cat;
+				$inc++;
+			}
+			$resultats->closeCursor();
+			return $allCat;
+			//$resultats->closeCursor();
+			//return $allCat;
+			} catch (PDOException $e) {
+				print "Error!: " . $e->getMessage() . "<br/>";
+				die();
+			}
+		
 	}
 }

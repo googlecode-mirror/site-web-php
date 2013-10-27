@@ -111,5 +111,27 @@ class ArticleDAO{
 		}
 	}
 	
-	
+	public function addNewArticle($article){
+		//INSERT INTO `news`(`News_id`, `News_date`, `News_content`, `News_author`, `Category_id`, `News_tag`, `News_title`)		try {
+		try {	
+			$stmt = $this->con->prepare("INSERT INTO siteperso.news".
+					" (News_id, News_date, News_content, News_author, news_id , Category_id, News_tag, News_title)".
+					" VALUES ( default, default, :news_content, :new_author, :news_category, :new_tags, :news_title)");
+			$userName = $comment->getUser_name();
+			$title = $comment->getTitle();
+			$content = $comment->getContent();
+			$newsId = $comment->getNews_id();
+			$ip=$comment->getIp();
+			$stmt->bindParam(':comment_user_name', $userName);
+			$stmt->bindParam(':comment_title', $title);
+			$stmt->bindParam(':comment_content', $content);
+			$stmt->bindParam(':news_id', $newsId);
+			$stmt->bindParam(':comment_ip', $ip);
+			$return=$stmt->execute();
+			return $return;
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+		}
+	}
 }

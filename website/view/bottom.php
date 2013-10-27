@@ -5,7 +5,7 @@
 		</div>
 		<div id="copyright">
 			&copy; Programmaniaks. Graphic Design by <a href="http://www.freecsstemplates.org/">FCT</a>.
-			Created by Shinzul and Malika
+			Created by Shinzul and Sephirine
 		</div>
 	</body>
 </html>
