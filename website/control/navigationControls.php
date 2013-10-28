@@ -12,7 +12,8 @@ class navigationControls{
 	
 	public function getLinkCategory($name){
 		$category= $this->cat->getByName($name);
-		$category_id=$category->category_id;
+		$category_id=$category['category_id'];
+		//$category_id= $category->category_id;
 		return "category.php?cat_id=".$category_id."";
 	}
 	

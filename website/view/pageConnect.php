@@ -9,7 +9,7 @@
 <?php include "leftIndex.php"?>
 
 <?php 
-			include "control/ArticleControls.php";
+			include_once "control/ArticleControls.php";
 			$firstArticle=new ArticleControls();
 			$firstArticle->print_Article();
 		?>

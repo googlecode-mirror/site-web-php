@@ -20,8 +20,8 @@
 							
 							echo $controller->get_ip();?>
 							<?php $dao=new CategoryDAO();
-						
-									var_dump($dao->getByName('news')); ?>
+								$cat = $dao->getByName('news');
+								var_dump($cat);?>
 						</p>
 					</div>
 

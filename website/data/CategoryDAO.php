@@ -27,10 +27,11 @@ class CategoryDAO{
 	public function getByName($titre){
 		try {
 			$resultats=$this->con->query("SELECT * from category where category_name ='".$titre."'"); // on va chercher tous les membres de la table 
-			$resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
-			$article = $resultats->fetch();
+			//$resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
+			$resultats->setFetchMode(PDO::FETCH_ASSOC);
+			$category= $resultats->fetch();
 			$resultats->closeCursor();
-			return $article;
+			return $category;
 		} catch (PDOException $e) {
 			print "Error!: " . $e->getMessage() . "<br/>";
 			die();
