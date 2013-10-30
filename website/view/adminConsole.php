@@ -5,7 +5,7 @@
 <?php include "listener/checkConnect.php"?>
 
 <?php include "header.php";
-		$page_title="C là qu'on parle aussi bien des Pythons que des Perl"; ?>
+		$page_title="Welcome ".$_SESSION['USR']." !"; ?>
 
 <?php include "leftIndex.php"?>
 
@@ -14,7 +14,7 @@
 	<img src="images/console.png" width="150" height="150" alt=""
 		class="left" />
 	<p>
-	
+	<?php $articleController= new ArticleControls();?>
 	
 	<ul>
 		<li>link to new article form</li>
@@ -22,19 +22,28 @@
 	</ul>
 	<div class="box">
 		<h3>Poster une nouvelle news:</h3>
-		<form METHOD="POST" >
-			Categorie:<!--  <select id="categorie">  -->
+		<form METHOD="POST">
+			Categorie:
+			<!--  <select id="categorie">  -->
+			<input type=text list=categories>
+			<datalist id=categories>
 				<?php 
-					$articleController= new ArticleControls();
-					//echo $articleController->generateCombobox();
-					foreach ($articleController->getCategories() as  $value) {
-
-						echo('option value="'.$value->category_id.'"'.$value->category_name.'/option');
+				//echo $articleController->generateCombobox();
+				foreach ($articleController->getCategories() as  $value) {
+						echo('<option>'.$value->category_name);
 					}
-				?>
+					?>
+			</datalist>
+			<?php 
+// 			$articleController= new ArticleControls();
+// 			//echo $articleController->generateCombobox();
+// 			foreach ($articleController->getCategories() as  $value) {
+
+// 						echo('<option>'.$value->category_id.'"'.$value->category_name.'/option');
+// 					}
+// 					?>
 			<!--</select>-->
-			<br/>
-			Titre: <input type="text" name="title"></input><br /> Votre
+			<br /> Titre: <input type="text" name="title"></input><br /> Votre
 			commentaire:<br />
 			<textarea dir="ltr" tabindex="1"
 				style="display: block; width: 540px; height: 250px" cols="60"
@@ -42,11 +51,11 @@
 			<input class="button" type="submit" tabindex="1" accesskey="r"
 				value="Envoie" name="envoieCom">
 		</form>
-		<p>
-			<?php 
-			echo($_SESSION['USR']);
-			?>
-		</p>
+	
+	
+	<form name="inscription" method="POST" action="listener/AdminLogout.php">
+		<input type="submit" value="Log out">
+	</form>
 	</div>
 
 	</p>

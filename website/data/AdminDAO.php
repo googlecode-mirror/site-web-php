@@ -24,7 +24,7 @@ class AdminDAO{
 			$count = $resultats->fetch()[0];
 			if($count==1){
 				session_start();
-				if($login=='lily'){
+				if($login=='malika'){
 					$_SESSION['USR']='Sephirine';
 				}else{
 					$_SESSION['USR']='Shinzul';
