@@ -53,6 +53,10 @@ class ArticleControls{
 		return $this->aArticleDAO->getFiveLast();
 	}
 	
+	public function getFavorites(){
+		return $this->aArticleDAO->getFavorites();
+	}
+	
 	public function get_ip()
 	{
 	    if ( isset ( $_SERVER['HTTP_X_FORWARDED_FOR'] ) )

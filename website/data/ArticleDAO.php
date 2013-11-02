@@ -82,6 +82,24 @@ class ArticleDAO{
 		}
 	}
 	
+	public function getFavorites(){
+		$resultats=$this->con->query("SELECT * from favorites"); // on va chercher tous les membres de la table qu'on trie par ordre croissant
+		$resultats->setFetchMode(PDO::FETCH_ASSOC); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
+		$inc=0;
+		try {
+				
+			while($favorites = $resultats->fetch()){
+				$listArticle[$inc]=$favorites;
+				$inc++;
+			}
+			$resultats->closeCursor();
+			return @ $listArticle;
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+		}
+	}
+	
 	public function getByCategory($pId){
 		try {
 			$resultats=$this->con->query("SELECT * from news where Category_id=".$pId); // on va chercher tous les membres de la table qu'on trie par ordre croissant

@@ -43,7 +43,7 @@ class CategoryDAO{
 			$resultats=$this->con->query("SELECT * from category where category_id > 1 "); // on va chercher tous les membres de la table
 			//$resultats->setFetchMode(PDO::FETCH_ASSOC); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
 			//$allCat = $resultats->fetch();
-			$resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
+			$resultats->setFetchMode(PDO::FETCH_ASSOC); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
 			$inc=0;
 			
 			while($cat = $resultats->fetch()){

@@ -23,8 +23,8 @@ $keywords="Computer science, Architecture, Java, Linux";
 								if($list){
 									echo "<ul>";
 									foreach($list as $article){
-										var_dump($article);
-										echo '<li><a href="news.php?art_id='.$article->News_id.'">'.$article->News_title.'</a></li>';
+										echo '<li><a href="news.php?art_id='.$article->News_id.'">'.$article->News_title.'</a></li><br/>';
+										echo'<p>'.$article->News_sumup.'</p><br/>';
 									}
 									
 									echo "<li></li></ul>";

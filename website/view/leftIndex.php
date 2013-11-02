@@ -33,11 +33,11 @@
 						</h3>
 							<?php 
 								
-								$list=$object->getFiveLast();
+								$list=$object->getFavorites();
 								echo '<ul class="linkedList">';
-								foreach($list as $article){
+								foreach($list as $favorite){
 									
-									echo '<li class="first"><a href="news.php?art_id='.$article->News_id.'">'.$article->News_title.'</a></li>';
+									echo '<li class="first"><a href="'.$favorite['favorites_url'].'">'.$favorite['favorites_title'].'</a></li>';
 								}
 								
 								echo "<li></li></ul>";
