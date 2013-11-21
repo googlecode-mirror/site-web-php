@@ -3,6 +3,7 @@
 class Article{
 	private $id;
 	private $name;
+	private $category;
 	private $content;
 	private $author;
 	private $date;

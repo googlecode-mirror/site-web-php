@@ -26,12 +26,12 @@
 		<form METHOD="POST">
 			Categorie:
 			<!--  <select id="categorie">  -->
-			<input type=text list=categories>
+			<input type=text list=categories name="category">
 			<datalist id=categories>
 				<?php 
 				//echo $articleController->generateCombobox();
 				foreach ($articleController->getCategories() as  $value) {
-						echo('<option>'.$value->category_name);
+						echo('<option>'.$value[category_name]);
 					}
 					?>
 			</datalist>
@@ -44,16 +44,16 @@
 // 					}
 // 					?>
 			<!--</select>-->
-			<br /> Titre: <input type="text" name="title"></input><br /> Votre
-			commentaire:<br />
+			<br /> Titre: <input type="text" name="title"></input>
+			<br /> Votre commentaire:<br />
 			<textarea dir="ltr" tabindex="1" name="editor"
 				style="display: block; width: 540px; height: 250px" cols="60"
 				rows="10"></textarea>
 			<input class="button" type="submit" tabindex="1" accesskey="r"
 				value="Envoie" name="envoieCom">
 			<script>
-    CKEDITOR.replace( 'editor' );
-</script>
+   			 CKEDITOR.replace( 'editor' );
+			</script>
 		</form>
 
 		<form name="inscription" method="POST"

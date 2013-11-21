@@ -44,6 +44,7 @@ class CategoryDAO{
 			//$resultats->setFetchMode(PDO::FETCH_ASSOC); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
 			//$allCat = $resultats->fetch();
 			$resultats->setFetchMode(PDO::FETCH_ASSOC); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
+	
 			$inc=0;
 			
 			while($cat = $resultats->fetch()){

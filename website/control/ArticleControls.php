@@ -21,7 +21,6 @@ class ArticleControls{
 	}
 	
 	public function getCategories(){
-		
 		return $aListCategory=$this->aCategoryDAO->getAllFetchArray();
 		
 	}
@@ -48,6 +47,15 @@ class ArticleControls{
 			return true;
 		}else return false;
 	}
+	
+	
+	public function addMail($article){
+		$insert=$this->aArticleDAO->addNewArticle($article);
+		if($insert == 1){
+			return true;
+		}else return false;	
+	}
+	
 	
 	public function getFiveLast(){
 		return $this->aArticleDAO->getFiveLast();
