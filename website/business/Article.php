@@ -15,6 +15,9 @@ class Article{
 	public function getName(){ return $this->name; }
 	public function setName($pName){ $this->name=$pName; }
 	
+	public function getCategory(){ return $this->category; }
+	public function setCategory($pCategory){ $this->category=$pCategory; }
+	
 	public function getContent(){ return $this->content; }
 	public function setContent($pContent){ $this->content=$pContent; }
 	

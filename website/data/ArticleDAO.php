@@ -134,24 +134,31 @@ class ArticleDAO{
 		//INSERT INTO `news`(`News_id`, `News_date`, `News_content`, `News_author`, `Category_id`, `News_tag`, `News_title`)		try {
 		try {	
 			$categoryDao = new CategoryDao();
-			$category = $categoryDao->getByName($article->category);
+// 			$category = $categoryDao->getByName($article->category);
 			
 			$stmt = $this->con->prepare("INSERT INTO siteperso.news".
-					" ('News_id', 'News_date', 'News_content', 'News_author', 'Category_id', 'News_tag', 'News_title', 'News_sumup')".
 					" VALUES ( default, default, :news_content, :new_author, :news_category, :new_tags, :news_title, :new_sumup)");
-			$userName = $comment->getUser_name();
-			$title = $comment->getTitle();
-			$content = $comment->getContent();
-			$newsId = $comment->getNews_id();
-			$ip=$comment->getIp();
-			$stmt->bindParam(':comment_user_name', $userName);
-			$stmt->bindParam(':comment_title', $title);
-			$stmt->bindParam(':comment_content', $content);
-			$stmt->bindParam(':news_id', $newsId);
-			$stmt->bindParam(':news_category', $category->getId());
-			$stmt->bindParam(':comment_ip', $ip);
-			$return=$stmt->execute();
-			return $return;
+			
+			//" ('News_id', 'News_date', 'News_content', 'News_author', 'Category_id', 'News_tag', 'News_title', 'News_sumup')".
+// 			$author = $article->getAuthor();
+			$author = 'malika';
+			$title = $article->getName();
+			$content = $article->getContent();
+			$categoryId = $article->getCategory();
+			$tags="";
+			$sumup="";
+			
+			$stmt->bindParam(':news_content', $content);
+			$stmt->bindParam(':new_author', $author);
+			$stmt->bindParam(':news_category', $categoryId);
+			$stmt->bindParam(':new_tags', $tags);
+			$stmt->bindParam(':news_title',$title);
+			$stmt->bindParam(':new_sumup', $sumup);
+			
+			var_dump($stmt);
+			
+ 			$return=$stmt->execute();
+// 			return $return;
 		} catch (PDOException $e) {
 			print "Error!: " . $e->getMessage() . "<br/>";
 			die();

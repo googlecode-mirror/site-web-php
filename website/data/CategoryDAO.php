@@ -38,6 +38,23 @@ class CategoryDAO{
 		}
 	}
 	
+	public function getIdForName($titre){
+		try {
+			$query = "SELECT category_id from category where category_name ='".$titre."'";
+			$resultats=$this->con->query($query); // on va chercher tous les membres de la table
+			//$resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
+			$resultats->setFetchMode(PDO::FETCH_UNIQUE);
+			$category= $resultats->fetch();
+			$resultats->closeCursor();
+			$categoryId = $category['category_id'];
+			return $categoryId;
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+		}
+	}
+	
+	
 	public function getAllFetchArray(){
 		try{
 			$resultats=$this->con->query("SELECT * from category where category_id > 1 "); // on va chercher tous les membres de la table

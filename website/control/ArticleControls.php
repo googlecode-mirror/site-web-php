@@ -1,8 +1,10 @@
 <?php
 
 
-include  "data/ArticleDAO.php";
-include "data/CommentDAO.php";
+include_once  "data/ArticleDAO.php";
+include_once "data/CommentDAO.php";
+include_once "data/CategoryDAO.php";
+require_once "jbbcode-1.1.1/Parser.php";
 
 class ArticleControls{
 	
@@ -56,6 +58,13 @@ class ArticleControls{
 		}else return false;	
 	}
 	
+	
+	public function readBBcode($article){
+		$parser = new JBBCode\Parser();
+		$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
+		$parser->parse($article->News_content);
+		return $parser->getAsHtml();
+	}
 	
 	public function getFiveLast(){
 		return $this->aArticleDAO->getFiveLast();

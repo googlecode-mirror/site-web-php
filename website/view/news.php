@@ -19,7 +19,7 @@
 						</h2>
 						<img src="images/News.jpg" width="150" height="150" alt="" class="left" />
 						<p>
-							<?php echo $article->News_content;?>
+							<?php echo $object->readBBcode($article) ;?>
 							<br/>
 	
 						</p>

@@ -23,7 +23,7 @@
 	</ul>
 	<div class="box">
 		<h3>Poster une nouvelle news:</h3>
-		<form METHOD="POST">
+		<form METHOD="POST" action="listener/postArticle.php">
 			Categorie:
 			<!--  <select id="categorie">  -->
 			<input type=text list=categories name="category">
@@ -31,21 +31,13 @@
 				<?php 
 				//echo $articleController->generateCombobox();
 				foreach ($articleController->getCategories() as  $value) {
-						echo('<option>'.$value[category_name]);
+						echo('<option>'.$value['category_name']);
 					}
 					?>
 			</datalist>
-			<?php 
-			// 			$articleController= new ArticleControls();
-			// 			//echo $articleController->generateCombobox();
-			// 			foreach ($articleController->getCategories() as  $value) {
-
-// 						echo('<option>'.$value->category_id.'"'.$value->category_name.'/option');
-// 					}
-// 					?>
 			<!--</select>-->
 			<br /> Titre: <input type="text" name="title"></input>
-			<br /> Votre commentaire:<br />
+			<br /> Votre article:<br />
 			<textarea dir="ltr" tabindex="1" name="editor"
 				style="display: block; width: 540px; height: 250px" cols="60"
 				rows="10"></textarea>
