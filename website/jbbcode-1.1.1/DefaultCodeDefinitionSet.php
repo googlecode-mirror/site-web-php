@@ -3,6 +3,7 @@
 namespace JBBCode;
 
 require_once 'CodeDefinition.php';
+require_once 'ListCodeDefinition.php';
 require_once 'CodeDefinitionBuilder.php';
 require_once 'CodeDefinitionSet.php';
 require_once 'validators/UrlValidator.php';
@@ -75,6 +76,15 @@ class DefaultCodeDefinitionSet implements CodeDefinitionSet
         $builder->setParseContent(true);
         /* TODO: Validate color */
         array_push($this->definitions, $builder->build());
+        
+        /* [list] list tag */
+//         $builder = new CodeDefinitionBuilder('list', '<ul>{param}</ul>');
+//         $builder->setParseContent(true);
+//         array_push($this->definitions, $builder->build());
+        
+        
+        /* [*] element tag */
+        array_push($this->definitions,new ListCodeDefinition());
     }
 
     /**

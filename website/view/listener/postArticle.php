@@ -2,17 +2,16 @@
 
 
 include_once 'data/CategoryDAO.php';
-include_once 'data/ArticleDAO.php';
+include_once 'control/ArticleControls.php';
 include_once 'business/Article.php';
 
 session_start();
 
 
 $categoryDao = new CategoryDao();
-$articleDao = new ArticleDao();
+$articleController = new ArticleControls();
 $categoryId = $categoryDao->getIdForName($_POST['category']);
-var_dump($_POST['category']);
-var_dump($categoryId);
+
 
 $article = new Article();
 $article->setName($_POST['title']);
@@ -21,4 +20,9 @@ $article->setCategory($categoryId);
 $article->setAuthor($_SESSION['USR']);
 
 
-$articleDao->addNewArticle($article);
+$ret=$articleController->submitNewArticle($article);
+if($ret){
+	header("location:../adminConsole.php");
+}else{
+	echo "Unexpected exception";
+}

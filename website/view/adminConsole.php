@@ -4,23 +4,19 @@
 
 <?php include "listener/checkConnect.php"?>
 
-<?php include "header.php";
+<?php include_once "header.php";
 		$page_title="Welcome ".$_SESSION['USR']." !"; ?>
 
 <?php include "leftIndex.php"?>
 
 <div class="box">
 	<h2>Admin console</h2>
-	<img src="images/console.png" width="150" height="150" alt=""
-		class="left" />
-	<p>
+	<!-- <img src="images/console.png" width="150" height="150" alt=""
+		class="left" /> -->
+
 		<?php $articleController= new ArticleControls();?>
 	
-	
-	<ul>
-		<li>link to new article form</li>
-		<li>tab for new comment</li>
-	</ul>
+	<?php include "buttonAdmin.php"?>
 	<div class="box">
 		<h3>Poster une nouvelle news:</h3>
 		<form METHOD="POST" action="listener/postArticle.php">
@@ -54,7 +50,7 @@
 		</form>
 	</div>
 
-	</p>
+
 </div>
 
 <?php include "bottom.php"?>

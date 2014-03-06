@@ -155,10 +155,8 @@ class ArticleDAO{
 			$stmt->bindParam(':news_title',$title);
 			$stmt->bindParam(':new_sumup', $sumup);
 			
-			var_dump($stmt);
-			
  			$return=$stmt->execute();
-// 			return $return;
+			return $return;
 		} catch (PDOException $e) {
 			print "Error!: " . $e->getMessage() . "<br/>";
 			die();

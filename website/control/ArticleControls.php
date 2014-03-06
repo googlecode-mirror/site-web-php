@@ -140,14 +140,22 @@ class ArticleControls{
 	}
 	
 	public function generateCombobox(){
-		/*<option value="3">Select</option>
-		<option value="0">Open</option>
-		<option value="1">Closed</option>*/
 		$ret="";
 		foreach ($this->getCategories() as  $value) {
     		$ret=$ret.'<option value="'.$value->category_id.'">'.$value->category_name.'</option>';
 		}
 		return $ret;
+	}
+	
+	public function submitNewArticle(Article $article){
+		$this->formatContent($article);
+		return $this->aArticleDAO->addNewArticle($article);
+	}
+	
+	private function formatContent(Article $article){
+		$var=$article->getContent();
+		$var = str_replace("\n", "<br/>", $var);
+		$article->setContent($var);
 	}
 }
 ?>

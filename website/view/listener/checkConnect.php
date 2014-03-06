@@ -11,5 +11,6 @@
 	if(!$isAdmin){
 		header("location:../news.php");
 	}
+// 	session_close();
  /* Redirect browser */
 ?>
