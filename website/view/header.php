@@ -47,7 +47,7 @@ Released   : 20120723
 					$url= $catControl->generateMenu();
 					echo $url;
 					?>
-					<li class="last"><a href="#">Contact</a>
+					<li class="last"><a href="contact.php">Contact</a>
 					</li>
 				</ul>
 				<br class="clear" />

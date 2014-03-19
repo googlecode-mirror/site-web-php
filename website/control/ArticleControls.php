@@ -27,6 +27,10 @@ class ArticleControls{
 		
 	}
 	
+	public function getAllUncheckedComments(){
+		return $this->aCommentDAO->getAllUnvalid();
+	}
+	
 	public function getArticle(){
 		return $this->aArticle;
 	}
@@ -150,6 +154,11 @@ class ArticleControls{
 	public function submitNewArticle(Article $article){
 		$this->formatContent($article);
 		return $this->aArticleDAO->addNewArticle($article);
+	}
+	
+	public function validComments($articleID){
+		$insert=$this->aCommentDAO->validComments($articleID);
+		return $insert;
 	}
 	
 	private function formatContent(Article $article){
