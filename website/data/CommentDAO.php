@@ -39,6 +39,16 @@ class CommentDAO {
 	
 	}
 	
+	public function removeAllUnvalid(){
+		try {
+			$resultats=$this->con->exec("delete from comment where comment_isValid=0 "); // on va chercher tous les membres de la table qu'on trie par ordre croissant
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+		}
+	
+	}
+	
 	
 	
 	public function getByNews($pId){

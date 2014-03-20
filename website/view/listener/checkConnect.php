@@ -1,16 +1,12 @@
 <?php
 
+include_once 'data/AdminDAO.php';
+$admin = new AdminDAO();
+if($_SESSION['isAdmin']){
+	$isAdmin=true;
+}else{
+	header("location:../index.php");
+}
 
-	session_start();
-	$isAdmin=false;
-	if(isset($_SESSION['isAdmin'])){
-		if($_SESSION['isAdmin']==true){
-			$isAdmin=true;	
-		}
-	}
-	if(!$isAdmin){
-		header("location:../news.php");
-	}
-// 	session_close();
- /* Redirect browser */
+
 ?>

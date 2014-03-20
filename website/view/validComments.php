@@ -1,14 +1,14 @@
 
 
-<?php $title="admin";?>
+<?php $title="admin"; ?>
+<?php include "header.php";
+		$page_title="Welcome ".$_SESSION['USR']." !"; ?>
+
+		
+<?php include "leftIndex.php"?>
 
 
 <?php include "listener/checkConnect.php"?>
-
-<?php include_once "header.php";
-		$page_title="Welcome ".$_SESSION['USR']." !"; ?>
-
-<?php include "leftIndex.php"?>
 
 <div class="box">
 	<h2>Admin console</h2>

@@ -166,5 +166,9 @@ class ArticleControls{
 		$var = str_replace("\n", "<br/>", $var);
 		$article->setContent($var);
 	}
+	
+	 public function removeAllUncheckedComments(){
+	 	$this->aCommentDAO->removeAllUnvalid();
+	 }
 }
 ?>

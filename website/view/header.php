@@ -9,7 +9,8 @@ Description: A two-column, fixed-width design with a bright color scheme.
 Version    : 1.0
 Released   : 20120723
 -->
-<?php include_once 'control/navigationControls.php';?>
+<?php include_once 'control/navigationControls.php';
+		session_start();?>
 
 <html>
 <head>

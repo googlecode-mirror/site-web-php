@@ -1,6 +1,7 @@
 <?php
 
 include_once 'data/CategoryDAO.php';
+include_once 'data/AdminDAO.php';
 
 class navigationControls{
 
@@ -44,6 +45,15 @@ class navigationControls{
 			}
 		}
 		return $link;
+	}
+	
+	public function isAdmin(){
+		$admin = new AdminDAO();
+		if($_SESSION['isAdmin']){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 }

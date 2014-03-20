@@ -18,6 +18,7 @@ if($allUncheckedComment != null){
 		}
 
 	}
+	$articleController->removeAllUncheckedComments();
 }
 
 if($ret){

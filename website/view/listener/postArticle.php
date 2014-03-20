@@ -4,7 +4,6 @@ include_once 'data/CategoryDAO.php';
 include_once 'control/ArticleControls.php';
 include_once 'business/Article.php';
 
-session_start();
 
 
 $categoryDao = new CategoryDao();

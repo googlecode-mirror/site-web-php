@@ -23,7 +23,6 @@ class AdminDAO{
 			$resultats->setFetchMode(PDO::FETCH_NUM); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
 			$count = $resultats->fetch()[0];
 			if($count==1){
-				session_start();
 				if($login=='malika'){
 					$_SESSION['USR']='Sephirine';
 				}else{
