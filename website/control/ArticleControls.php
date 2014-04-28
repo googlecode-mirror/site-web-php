@@ -48,6 +48,7 @@ class ArticleControls{
 	}
 	
 	public function addComment($comment){
+		$htmlComment =htmlentities($comment);
 		$insert=$this->aCommentDAO->addNewComment( $comment);
 		if($insert == 1){
 			return true;
@@ -56,7 +57,8 @@ class ArticleControls{
 	
 	
 	public function addMail($article){
-		$insert=$this->aArticleDAO->addNewArticle($article);
+		$htmlemail =htmlentities($article);
+		$insert=$this->aArticleDAO->addNewArticle($htmlemail);
 		if($insert == 1){
 			return true;
 		}else return false;	
@@ -169,6 +171,23 @@ class ArticleControls{
 	
 	 public function removeAllUncheckedComments(){
 	 	$this->aCommentDAO->removeAllUnvalid();
+	 }
+	 
+	 function printAllUpload(){
+	 	$root ="../view/uploads";
+	 	$Myrep = opendir($root) or die('Erreur : répertoire non trouvé : '.$rep);
+	 	echo '<ul>';
+
+	 	while($Entry = @readdir($Myrep)) {
+	 		if(!(is_dir($root.$Entry)&& $Entry != '.' && $Entry != '..')) {
+	 			$extension=strtolower(strrchr($Entry,'.'));
+	 			if (in_array ($extension, array ('.gif','.jpg','.jpeg','.png'))){
+	 				echo "<li><table><tr><td>./uploads/".$Entry."</td></tr><tr><td><img src='./uploads/".$Entry."' style='height:100px;'></td></tr></table></li>";
+	 			}
+	 		}
+	 	}
+	 	echo '</ul>';
+	 	closedir($Myrep);
 	 }
 }
 ?>

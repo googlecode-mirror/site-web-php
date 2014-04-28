@@ -44,7 +44,7 @@ class DefaultCodeDefinitionSet implements CodeDefinitionSet
         $builder->setTagName('url');
         $builder->setReplacementText('<a href="{param}">{param}</a>');
         $builder->setParseContent(false);
-        $builder->setBodyValidator($urlValidator);
+//         $builder->setBodyValidator($urlValidator);
         array_push($this->definitions, $builder->build());
 
         /* [url=http://example.com] link tag */
@@ -52,16 +52,17 @@ class DefaultCodeDefinitionSet implements CodeDefinitionSet
         $builder->setReplacementText('<a href="{option}">{param}</a>');
         $builder->setParseContent(true);
         $builder->removeBodyValidator();
-        $builder->setOptionValidator($urlValidator);
+//         $builder->setOptionValidator($urlValidator);
         array_push($this->definitions, $builder->build());
 
         /* [img] image tag */
+        $builder = new CodeDefinitionBuilder('img', '<img src="{param}" />');
         $builder->setTagName('img');
         $builder->setUseOption(false);
         $builder->setParseContent(false);
         $builder->setReplacementText('<img src="{param}" />');
         $builder->removeOptionValidator();
-        $builder->setBodyValidator($urlValidator);
+//         $builder->setBodyValidator($urlValidator);
         array_push($this->definitions, $builder->build());
 
         /* [img=alt text] image tag */

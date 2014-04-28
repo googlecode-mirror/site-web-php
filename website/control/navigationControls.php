@@ -49,7 +49,7 @@ class navigationControls{
 	
 	public function isAdmin(){
 		$admin = new AdminDAO();
-		if($_SESSION['isAdmin']){
+		if(isset($_SESSION) && $_SESSION['isAdmin']){
 			return true;
 		}else{
 			return false;

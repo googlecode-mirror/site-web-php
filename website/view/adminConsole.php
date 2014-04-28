@@ -1,17 +1,18 @@
-
-
-<?php $title="admin"; ?>
-<?php include "header.php";
-		$page_title="Welcome ".$_SESSION['USR']." !"; ?>
+<?php 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$title="admin";
+$keywords = " "; 
+$description = " ";
+$page_title="Welcome ".$_SESSION['USR']." !";
+include "header.php";
+ ?>
 
 		
 <?php include "leftIndex.php"?>
 
-
 <?php include "listener/checkConnect.php"?>
-
-
-
 
 <div class="box">
 	<h2>Admin console</h2>
@@ -19,6 +20,7 @@
 		<?php $articleController= new ArticleControls();?>
 	
 	<?php include "buttonAdmin.php"?>
+	
 	<div class="box">
 		<h3>Poster une nouvelle news:</h3>
 		<form METHOD="POST" action="listener/postArticle.php">

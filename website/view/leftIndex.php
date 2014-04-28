@@ -8,6 +8,7 @@
 	<img src="images/banner.jpg" alt="" />
 </div>
 <div id="main">
+
 	<?php include "control/ArticleControls.php";?>
 	<?php $object=new ArticleControls();
 			$navigation=new navigationControls();?>
@@ -47,7 +48,7 @@
 
 		</div>
 		<div>
-			<?php if($navigation->isAdmin()){ ?>
+			<?php if($_SESSION['isAdmin'] == true){ ?>
 			<a href="adminConsole.php"><img src="images/console.png" width="30"
 				height="30" alt="" class="left" />Admin Console</a>
 			<?php }?>

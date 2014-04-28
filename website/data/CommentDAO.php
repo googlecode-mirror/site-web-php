@@ -107,11 +107,11 @@ class CommentDAO {
 			$content = $comment->getContent();
 			$newsId = $comment->getNews_id();
 			$ip=$comment->getIp();
-			$stmt->bindParam(':comment_user_name', $userName);
-			$stmt->bindParam(':comment_title', $title);
-			$stmt->bindParam(':comment_content', $content);
-			$stmt->bindParam(':news_id', $newsId);
-			$stmt->bindParam(':comment_ip', $ip);
+			$stmt->bindParam(':comment_user_name', htmlentities($userName));
+			$stmt->bindParam(':comment_title', htmlentities($title));
+			$stmt->bindParam(':comment_content', htmlentities($content));
+			$stmt->bindParam(':news_id', htmlentities($newsId));
+			$stmt->bindParam(':comment_ip', htmlentities($ip));
 			$return=$stmt->execute();
 			return $return;
 			} catch (PDOException $e) {

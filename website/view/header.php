@@ -10,7 +10,9 @@ Version    : 1.0
 Released   : 20120723
 -->
 <?php include_once 'control/navigationControls.php';
-		session_start();?>
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}?>
 
 <html>
 <head>

@@ -3,8 +3,9 @@
 include_once 'data/AdminDAO.php';
 
 $admin = new AdminDAO();
-if(isset($_SESSION) ){
-	session_destroy();
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
 if($admin->isAdmin($_POST['login'], $_POST['password'])){
 	$_SESSION['isAdmin'] = true ;
