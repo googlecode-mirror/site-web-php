@@ -38,8 +38,8 @@ if (session_status() == PHP_SESSION_NONE) {
 				</h1>
 			</div>
 			<div id="search">
-				<form action="" method="post">
-					<div>
+				<form action="listener/search.php" method="post">
+					<div >
 						<input class="text" name="search" size="32" maxlength="64" />
 					</div>
 				</form>

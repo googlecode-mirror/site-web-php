@@ -100,6 +100,29 @@ class ArticleDAO{
 		}
 	}
 	
+	public function getBySearch($htmlSearch){
+		try{
+			$stmt = $this->con->prepare("Select * from news where news_title like :crit");
+			$titleSearch = "%".$htmlSearch."%";
+			$stmt->bindParam(':crit', $titleSearch);
+			$stmt->setFetchMode(PDO::FETCH_OBJ);
+			$stmt->execute();
+			$inc=0;
+			
+			while($article = $stmt->fetch()){
+				$listArticle[$inc]=$article;
+				$inc++;
+			}
+			$stmt->closeCursor();
+			return @ $listArticle;
+				
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+		}
+		
+	}
+	
 	public function getByCategory($pId){
 		try {
 			$resultats=$this->con->query("SELECT * from news where Category_id=".$pId); // on va chercher tous les membres de la table qu'on trie par ordre croissant

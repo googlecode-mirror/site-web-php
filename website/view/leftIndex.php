@@ -17,8 +17,7 @@
 			<h3>Derniers articles</h3>
 			<div class="dateList">
 				<?php 
-
-								$list=$object->getFiveLast();?>
+				$list=$object->getFiveLast();?>
 				<ul class="linkedList dateList">
 					<?php foreach($list as $article){ 
 						echo '<li class="first"><span class="date">'.$ret=$object->dateReducted($article->News_date).'</span><a href="news.php?art_id='.$article->News_id.'">'.$article->News_title.'</a></li>';
@@ -48,10 +47,15 @@
 
 		</div>
 		<div>
-			<?php if($_SESSION['isAdmin'] == true){ ?>
-			<a href="adminConsole.php"><img src="images/console.png" width="30"
+		<?php 
+			$name = 'isAdmin';
+			if (session_status() != PHP_SESSION_NONE
+					&& (isset($_SESSION[$name]) && $_SESSION[$name] == true)) {	
+		?>
+				<a href="adminConsole.php"><img src="images/console.png" width="30" 
 				height="30" alt="" class="left" />Admin Console</a>
-			<?php }?>
+				<?php }?>
+			
 		</div>
 	</div>
 	<div id="content">

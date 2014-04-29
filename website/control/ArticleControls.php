@@ -39,6 +39,11 @@ class ArticleControls{
 		return $this->aArticleDAO->getByCategory($var);
 	}
 	
+	public function getArticlesMatchingSearch($search){
+		$htmlSearch =htmlentities($search);
+		return $this->aArticleDAO->getBySearch($htmlSearch);
+	}
+	
 	public function getArticleById($id) {
 		return $this->aArticleDAO->getById($id);
 	}
