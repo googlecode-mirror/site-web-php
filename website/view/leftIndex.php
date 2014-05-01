@@ -9,7 +9,7 @@
 </div>
 <div id="main">
 
-	<?php include "control/ArticleControls.php";?>
+	<?php include_once "control/ArticleControls.php";?>
 	<?php $object=new ArticleControls();
 			$navigation=new navigationControls();?>
 	<div id="sidebar">

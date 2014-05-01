@@ -14,8 +14,10 @@ $categoryId = $categoryDao->getIdForName($_POST['category']);
 $article = new Article();
 $article->setName($_POST['title']);
 $article->setContent($_POST['editor']);
+$article->setSumup($_POST['sumup_editor']);
 $article->setCategory($categoryId);
 $article->setAuthor($_SESSION['USR']);
+$article->setTags($_SESSION['tag']);
 
 
 $ret=$articleController->submitNewArticle($article);

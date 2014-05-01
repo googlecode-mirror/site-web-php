@@ -5,6 +5,7 @@ class Article{
 	private $name;
 	private $category;
 	private $content;
+	private $sumup;
 	private $author;
 	private $date;
 	private $tags;
@@ -14,6 +15,9 @@ class Article{
 	
 	public function getName(){ return $this->name; }
 	public function setName($pName){ $this->name=$pName; }
+	
+	public function getSumup(){ return $this->sumup; }
+	public function setSumup($psumup){ $this->sumup=$psumup; }
 	
 	public function getCategory(){ return $this->category; }
 	public function setCategory($pCategory){ $this->category=$pCategory; }

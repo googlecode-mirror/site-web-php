@@ -168,8 +168,8 @@ class ArticleDAO{
 			$title = $article->getName();
 			$content = $article->getContent();
 			$categoryId = $article->getCategory();
-			$tags="";
-			$sumup="";
+			$tags=$article->getTags();
+			$sumup= $article->getSumup();;
 			
 			$stmt->bindParam(':news_content', $content);
 			$stmt->bindParam(':new_author', $author);

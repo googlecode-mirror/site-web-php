@@ -1,18 +1,21 @@
-
-<?php $title="Articles";
-		$keywords="Computer science, Architecture, Java, Linux";
-		$description="News and Discutions about Computer science" ?>
-<?php include "header.php";
-		$page_title="C là qu'on parle aussi bien des Pythons que des Perl"; ?>
-
-		
-<?php include "leftIndex.php"?>
 <?php include_once "control/ArticleControls.php"?>
 <?php 
 	$id = $_GET["art_id"];
 	$object = new ArticleControls();
 	$article=$object->getArticleById($id);
 ?>
+
+<?php $title=$article->News_title;
+		$keywords=$article->News_tag;
+		$description=$article->News_sumup; ?>
+
+<?php include "header.php";
+		$page_title="C là qu'on parle aussi bien des Pythons que des Perl"; ?>
+
+		
+<?php include "leftIndex.php"?>
+
+
 					<div class="box">
 						<h2>
 							<?php echo $article->News_title; ?>
