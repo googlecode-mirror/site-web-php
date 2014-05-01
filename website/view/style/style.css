@@ -18,6 +18,11 @@ Released   : 20120723
 	display: list-item;
 }
 
+.news{
+	text-align:justify;
+	text-justify:inter-word;
+}
+
 * {
 	margin: 0;
 	padding: 0;
