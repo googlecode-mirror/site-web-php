@@ -11,10 +11,19 @@ if ($_FILES['file']['error'] > 0)
 	$extension_upload = strtolower(  substr(  strrchr($_FILES['file']['name'], '.')  ,1)  );
 	if (! in_array($extension_upload,$extensions_valides) ){
 		$erreur = "Unexpected file type";
+		echo($erreur);
 	}else{
+		$width=500; //*** Fix Width & Heigh (Autu caculate) ***//
+		$size=GetimageSize($_FILES['file']['tmp_name']);
+		$height=round($width*$size[1]/$size[0]);
+		$images_orig = ImageCreateFromJPEG($_FILES['file']['tmp_name']);
+		$photoX = ImagesX($images_orig);
+		$photoY = ImagesY($images_orig);
+		$images_fin = ImageCreateTrueColor($width, $height);
+		ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
 		$name = "../uploads/".$_POST['title'].".".$extension_upload;
-		$resultat = move_uploaded_file($_FILES['file']['tmp_name'],$name);
-		if ($resultat) echo "File created: ".$name;
+		ImageJPEG($images_fin,$name);
+		header("location:../uploadImages.php");
 	}
 }
 ?>

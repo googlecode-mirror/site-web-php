@@ -178,7 +178,19 @@ class ArticleControls{
 	 	$this->aCommentDAO->removeAllUnvalid();
 	 }
 	 
-	 function printAllUpload(){
+	 public static function deleteImg(){
+	 	if (array_key_exists('imageName', $_POST)) {
+		 	$imageName="../uploads/".$_POST['imageName'];
+		 	if (file_exists($imageName)) {
+		 		unlink($imageName);
+		 		echo 'File '.$imageName.' has been deleted';
+		 	} else {
+		 		echo 'Could not delete '.$imageName.', file does not exist';
+		 	}
+	 	}
+	 }
+	 
+	 public function printAllUpload(){
 	 	$root ="../view/uploads";
 	 	$Myrep = opendir($root) or die('Erreur : répertoire non trouvé : '.$rep);
 	 	echo '<ul>';
@@ -187,7 +199,16 @@ class ArticleControls{
 	 		if(!(is_dir($root.$Entry)&& $Entry != '.' && $Entry != '..')) {
 	 			$extension=strtolower(strrchr($Entry,'.'));
 	 			if (in_array ($extension, array ('.gif','.jpg','.jpeg','.png'))){
-	 				echo "<li><table><tr><td>./uploads/".$Entry."</td></tr><tr><td><img src='./uploads/".$Entry."' style='height:100px;'></td></tr></table></li>";
+	 				echo '<li>
+	 						<form METHOD="post" action="listener/deleteImage.php" >
+		 						<table>
+		 							<tr><td>./uploads/'.$Entry.'</td>
+		 								<td><input type="hidden" name="imageName" value="'.$Entry.'"/></tr>
+		 							<tr><td><img src="./uploads/'.$Entry.'" style="height:100px;"></td>
+		 								<td><input type="submit" name="Submit" value="Delete?" /></td></tr>
+		 						</table>
+	 						</form>
+	 					</li>';
 	 			}
 	 		}
 	 	}

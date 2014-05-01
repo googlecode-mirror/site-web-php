@@ -17,7 +17,6 @@
 						<h2>
 							<?php echo $article->News_title; ?>
 						</h2>
-						<img src="images/News.jpg" width="150" height="150" alt="" class="left" />
 						<p>
 							<?php echo $object->readBBcode($article) ;?>
 							<br/>
