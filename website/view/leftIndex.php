@@ -46,16 +46,24 @@
 								?>
 
 		</div>
-		<div>
+		
 		<?php 
 			$name = 'isAdmin';
 			if (session_status() != PHP_SESSION_NONE
 					&& (isset($_SESSION[$name]) && $_SESSION[$name] == true)) {	
 		?>
-				<a href="adminConsole.php"><img src="images/console.png" width="30" 
+		<div class="box">
+			<a href="adminConsole.php"><img src="images/console.png" width="30"
 				height="30" alt="" class="left" />Admin Console</a>
-				<?php }?>
-			
 		</div>
+		<div class="box">
+			<form name="inscription" method="POST"
+				action="listener/AdminLogout.php">
+			<INPUT border=0 src="./images/logout.png" type="image"
+					value="submit" align="left">
+					Log out 
+			</form>
+		</div>
+		<?php }?>
 	</div>
 	<div id="content">

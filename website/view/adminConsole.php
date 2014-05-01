@@ -47,11 +47,6 @@ include "header.php";
    			 CKEDITOR.replace( 'editor' );
 			</script>
 		</form>
-
-		<form name="inscription" method="POST"
-			action="listener/AdminLogout.php">
-			<input type="submit" value="Log out">
-		</form>
 	</div>
 
 

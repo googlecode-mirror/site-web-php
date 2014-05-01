@@ -31,6 +31,27 @@ class ArticleControls{
 		return $this->aCommentDAO->getAllUnvalid();
 	}
 	
+	public function printUnvalidComment($allUncheckedComment){
+		$articleId="";
+		if($allUncheckedComment != null){
+			echo "<ul>";
+			foreach ($allUncheckedComment as $comment){
+				$article;
+				if($articleId != $comment->news_id){
+					$article=$this->getArticleById($comment->news_id);
+					echo "<li><h2>$article->News_title<h2></li>";
+				}
+				echo "<li><b>".$comment->comment_title." by ".$comment->comment_user_name."</b><br>";
+				echo  $comment->comment_content."<br>";
+				echo ' validate? <input type="checkbox" name="valid_'.$comment->comment_id.'">';
+			}
+			echo '</ul>
+				<input class="button" type="submit" tabindex="1" accesskey="enter" value="Submit" name="validComments">';
+		}else{
+			echo "Every comments is now valid !";
+		}
+	}
+	
 	public function getArticle(){
 		return $this->aArticle;
 	}
@@ -81,6 +102,18 @@ class ArticleControls{
 		return $this->aArticleDAO->getFiveLast();
 	}
 	
+	public function printComments($id){
+		$listComment=$this->getListComment($id);
+		if($listComment != false){
+			foreach($listComment as $comment){
+				echo "<div class='comment'><h4>".$comment->comment_user_name."</h4>"
+						.$comment->comment_content."</div>";
+			}
+		}else{
+			echo "il n'y a pas de commentaires actuellement";
+		}
+	}
+
 	public function getFavorites(){
 		return $this->aArticleDAO->getFavorites();
 	}

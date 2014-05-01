@@ -1,28 +1,40 @@
 
 <?php $title="index";
-		$keywords="Computer science, Architecture, Java, Linux";
+$keywords="Computer science, Architecture, Java, Linux";
 		$description="Website of computer sciences news and articles" ?>
 <?php include "header.php";
 		$page_title="C là qu'on parle aussi bien des Pythons que des Perl"; ?>
-		
-<?php include_once 'data/CategoryDAO.php';?>
-		
-<?php include "leftIndex.php"?>
-				
-					<div class="box">
-						<h2>
-							En cours de réalisation..
-						</h2>
-						<img src="images/pic01.jpg" width="150" height="150" alt="" class="left" />
-						<p>
-							<?php include_once "control/ArticleControls.php";
-							$controller= new ArticleControls();
-							
-							echo $controller->get_ip();?>
-							<?php $dao=new CategoryDAO();
-								$cat = $dao->getByName('news');
-								var_dump($cat);?>
-						</p>
-					</div>
+<?php include "control/ArticleControls.php";?>
+<?php $object=new ArticleControls();
+			$navigation=new navigationControls();?>
 
-<?php include "bottom.php"?>
+
+<div id="banner">
+	<div class="captions">
+		<h2>
+			<?php echo $page_title?>
+		</h2>
+	</div>
+	<img src="images/banner.jpg" alt="" />
+</div>
+<div id="main">
+
+
+	<div class="box">
+		
+			<?php 
+				$list=$object->getFiveLast();
+				foreach($list as $article){ 
+					echo "<div class='index'>";
+					echo "<h3>".$article->News_title." - ".$object->dateReducted($article->News_date)."</h3>";
+					echo "<h4> Author : ".$article->News_author."</h4>";
+					echo "<p>".$article->News_sumup."</p>";
+					echo "</div>";
+					}
+				?>
+
+
+
+
+
+			<?php include "bottom.php"?>

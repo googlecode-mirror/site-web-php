@@ -274,6 +274,33 @@ ul {
 	line-height: 138px;
 }
 
+.index h3{
+	font-family: Arial,sans-serif;
+	color: #0A7E96;
+	text-decoration:underline;
+	margin-left: 15%;
+}
+
+.index{
+	border : 1px dotted  #656565;
+	margin: 20px 10px;
+}
+
+.index h4{
+	text-align:right;
+	margin-right: 25%;
+	color: #656565;
+	font-style:italic;
+	text-transform: none;
+}
+
+.index p{
+	text-align:justified;
+	margin-left: 15%;
+	color: #656565;
+	text-transform: none;
+}
+
 #search input.text {
 	padding: 10px 40px 10px 10px;
 	background: #ffffff url(../images/search.png) top right no-repeat;
