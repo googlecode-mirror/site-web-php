@@ -20,11 +20,10 @@
 						<h2>
 							<?php echo $article->News_title; ?>
 						</h2>
-						<p>
+						<div class="news">
 							<?php echo $object->readBBcode($article) ;?>
-							<br/>
-	
-						</p>
+						</div>
+						<br/>
 					</div>
 					<div class="box">
 					<h3>Commentaires</h3>

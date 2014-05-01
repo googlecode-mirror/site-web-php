@@ -16,10 +16,12 @@ class AdminDAO{
 
 	public function isAdmin($login, $password){
 		try{
+			$loginHtml = htmlentities($login);
+			$passwordHtml = htmlentities($password);
 			$resultats=$this->con->query("SELECT COUNT( * )
 					FROM user
 					WHERE user_password = (
-					SELECT AES_ENCRYPT( '".$password."',  'soho' ) ) and user_name='".$login."'");
+					SELECT AES_ENCRYPT( '".$passwordHtml."',  'soho' ) ) and user_name='".$loginHtml."'");
 			$resultats->setFetchMode(PDO::FETCH_NUM); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
 			$count = $resultats->fetch()[0];
 			if($count==1){

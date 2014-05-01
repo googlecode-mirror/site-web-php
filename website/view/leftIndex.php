@@ -17,14 +17,16 @@
 			<h3>Derniers articles</h3>
 			<div class="dateList">
 				<?php 
-				$list=$object->getFiveLast();?>
+				$list=$object->getFiveLast();
+				if($list != null){?>
 				<ul class="linkedList dateList">
 					<?php foreach($list as $article){ 
-						echo '<li class="first"><span class="date">'.$ret=$object->dateReducted($article->News_date).'</span><a href="news.php?art_id='.$article->News_id.'">'.$article->News_title.'</a></li>';
+						echo '<li class="first"><span class="date">'
+							.$ret=$object->dateReducted($article->News_date).'</span><a href="news.php?art_id='.$article->News_id.'">'.$article->News_title.'</a></li>';
 
 						?>
 
-					<?php } ?>
+					<?php }} ?>
 				</ul>
 			</div>
 		</div>
@@ -32,18 +34,16 @@
 		<div class="box">
 			<h3>Bienvenue chez les geeks !</h3>
 			<?php 
-
+			$list = null;
 			$list=$object->getFavorites();
 			echo '<ul class="linkedList">';
-			foreach($list as $favorite){
-
-									echo '<li class="first"><a href="'.$favorite['favorites_url'].'">'.$favorite['favorites_title'].'</a></li>';
-								}
-
-								echo "<li></li></ul>";
-
-									
-								?>
+			if($list!=null){
+				foreach($list as $favorite){
+					echo '<li class="first"><a href="'.$favorite['favorites_url'].'">'.$favorite['favorites_title'].'</a></li>';
+				}
+				echo "<li></li></ul>";
+			}
+			?>
 
 		</div>
 		

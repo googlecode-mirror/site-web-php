@@ -69,7 +69,7 @@ class ArticleDAO{
 			$resultats=$this->con->query("SELECT * from news where News_id >".$min." order by News_date"); // on va chercher tous les membres de la table qu'on trie par ordre croissant
 			$resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
 			$inc=0;
-	
+			$listArticle = null;
 			while($article = $resultats->fetch()){
 				$listArticle[$inc]=$article;
 				$inc++;

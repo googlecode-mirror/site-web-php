@@ -9,6 +9,15 @@ Version    : 1.0
 Released   : 20120723
 */
 
+
+.news ul li{
+	list-style-type: circle;
+	border: none !important;
+	list-style-position: inside;
+	padding: 10px 20px !important;
+	display: list-item;
+}
+
 * {
 	margin: 0;
 	padding: 0;
