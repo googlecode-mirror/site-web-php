@@ -196,6 +196,15 @@ class ArticleControls{
 		return $this->aArticleDAO->addNewArticle($article);
 	}
 	
+	public function alterArticle(Article $article){
+		$this->formatContent($article);
+		return $this->aArticleDAO->update($article);
+	}
+	
+	public function deleteArticle($id){
+		return $this->aArticleDAO->delete($id);
+	}
+	
 	public function validComments($articleID){
 		$insert=$this->aCommentDAO->validComments($articleID);
 		return $insert;

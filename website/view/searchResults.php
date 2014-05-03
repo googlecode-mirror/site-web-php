@@ -30,3 +30,5 @@
 
 	</p>
 </div>
+
+<?php include "bottom.php"?>

@@ -142,6 +142,43 @@ class ArticleDAO{
 	
 	}
 
+	public function update($article){
+		// UPDATE `siteperso`.`category` SET `category_name` = 'Detente' WHERE `category`.`category_id` =6;
+		try {
+			$categoryDao = new CategoryDao();
+				
+			$stmt = $this->con->prepare("UPDATE siteperso.news".
+					" set News_content =  :new_content ,".
+					" News_tag = :new_tags ,".
+					" News_title = :new_title ,".
+					" News_sumup = :new_sumup".
+					" where News_id = :new_id ");
+				
+			//" ('News_id', 'News_date', 'News_content', 'News_author', 'Category_id', 'News_tag', 'News_title', 'News_sumup')".
+			// 			$author = $article->getAuthor();
+			$title = $article->getName();
+			$content = $article->getContent();
+			$id = $article->getId();
+			$tags=$article->getTags();
+			$sumup= $article->getSumup();
+			
+			$stmt->bindParam(':new_content', $content);
+			$stmt->bindParam(':new_id', $id);
+			$stmt->bindParam(':new_tags', $tags);
+			$stmt->bindParam(':new_title',$title);
+			$stmt->bindParam(':new_sumup', $sumup);
+			
+			var_dump($stmt);
+				
+			$return=$stmt->execute();
+			return $return;
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+		}
+	}
+	
+	
 	public function delete($pId){
 		try {
 			$resultats=$this->con->exec("Delete from news where News_id=".$pId);
@@ -157,7 +194,6 @@ class ArticleDAO{
 		//INSERT INTO `news`(`News_id`, `News_date`, `News_content`, `News_author`, `Category_id`, `News_tag`, `News_title`)		try {
 		try {	
 			$categoryDao = new CategoryDao();
-// 			$category = $categoryDao->getByName($article->category);
 			
 			$stmt = $this->con->prepare("INSERT INTO siteperso.news".
 					" VALUES ( default, default, :news_content, :new_author, :news_category, :new_tags, :news_title, :new_sumup)");
