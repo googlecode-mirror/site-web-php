@@ -24,7 +24,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="style/style.css" />
 <script src="../ckeditor/ckeditor.js"></script>
-
+<script src="../scripts/jQuery.js"></script>
 </head>
 <body>
 	<div id="bg1"></div>

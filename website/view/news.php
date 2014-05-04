@@ -12,15 +12,20 @@
 <?php include "header.php";
 		$page_title="C là qu'on parle aussi bien des Pythons que des Perl"; ?>
 
+<script>
+$(document).ready(function(){
+	  $(':input[name="delete"]').click(function(){
+
+	  });
+	});
+</script>
+ 
 		
-<?php include "leftIndex.php"?>
-
-
-		<?php 
-			$name = 'isAdmin';
-			if (session_status() != PHP_SESSION_NONE
-					&& (isset($_SESSION[$name]) && $_SESSION[$name] == true)) {	
-		?>
+<?php include "leftIndex.php";
+		$name = 'isAdmin';
+		if (session_status() != PHP_SESSION_NONE
+				&& (isset($_SESSION[$name]) && $_SESSION[$name] == true)) {	
+			?>
 
 	<div class="box">
 		<h3>Poster une nouvelle news:</h3>
@@ -46,7 +51,8 @@
 				</script>
 		</form>
 	</div>
-	<?php } else {?>
+
+<?php } else {?>
 		<div class="box">
 			<h2>
 				<?php echo $article->News_title; ?>

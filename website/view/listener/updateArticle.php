@@ -18,12 +18,11 @@ $article->setTags($_POST['tags']);
 
 $name = 'delete';
 if (isset($_POST[$name])){
+	echo "???zae";
 	$ret=$articleController->deleteArticle(intval($_POST['id']));
 }else{
 	$ret=$articleController->alterArticle($article);
 }
-
-$ret=$articleController->submitNewArticle($article);
 if($ret){
 	header("location:../adminConsole.php");
 }else{
