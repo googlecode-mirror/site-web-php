@@ -16,15 +16,11 @@ $article->setContent($_POST['editor']);
 $article->setSumup($_POST['sumup_editor']);
 $article->setTags($_POST['tags']);
 
-$name = 'delete';
-if (isset($_POST[$name])){
-	echo "???zae";
-	$ret=$articleController->deleteArticle(intval($_POST['id']));
-}else{
-	$ret=$articleController->alterArticle($article);
-}
+
+$ret=$articleController->alterArticle($article);
+
 if($ret){
-	header("location:../adminConsole.php");
+	header("location:../news.php?art_id=".$_POST['id']);
 }else{
 	echo "Unexpected exception";
 }

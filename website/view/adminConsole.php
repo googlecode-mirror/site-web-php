@@ -8,7 +8,7 @@ $description = " ";
 $page_title="Welcome ".$_SESSION['USR']." !";
 include "header.php";
 ?>
-<script src="../ckeditor/ckeditor.js"></script>
+<script src="../script/ckeditor/ckeditor.js"></script>
 
 <?php include "leftIndex.php"?>
 

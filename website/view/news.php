@@ -17,13 +17,32 @@
 <script>
 $(document).ready(function(){
 	$(':input[name="delete"]').click(function(){
-		//TODO include some awesome code here
+		 $(function() {
+			 $( "#dialog-confirm" ).removeClass("dialog-hide");
+			 $( "#dialog-confirm" ).dialog({
+			 resizable: true,
+			 height:200,
+			 width: 486,
+			 modal: true,
+			 buttons: {
+					 "Delete all items": function() {
+						$('#deleteForm').submit();
+					 },
+					 Cancel: function() {
+						 $( this ).dialog( "close" );
+					 }
+				 }
+			 });
+		 });
   	});
 	$('pre').each(function(i, e) {
 		hljs.highlightBlock(e);
 	});
 });
 </script>
+<div id="dialog-confirm" class="dialog-hide" title="Empty the recycle bin?">
+<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
 		
 <?php 
 	include "leftIndex.php";
@@ -31,10 +50,13 @@ $(document).ready(function(){
 		if (session_status() != PHP_SESSION_NONE
 				&& (isset($_SESSION[$name]) && $_SESSION[$name] == true)) {	
 			?>
-	<script src="../ckeditor/ckeditor.js"></script>
+	<script src="../script/ckeditor/ckeditor.js"></script>
+	<link rel="stylesheet" href="../script/jquery-ui/css/start/jquery-ui-1.10.4.custom.css">
+	<script src="../script/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+
 	<div class="box">
 		<h3>Poster une nouvelle news:</h3>
-		<form METHOD="POST" action="listener/updateArticle.php">
+		<form id="updateForm" METHOD="POST" action="listener/updateArticle.php">
 			<input type="hidden" name="id" value="<?php echo $id; ?>" /> 
 			<br /> Titre: <input type="text" name="title" value="<?php echo $article->News_title; ?>"/>
 			<br /> Tags: <input type="text" name="tags" value="<?php echo $article->News_tag; ?>"/>
@@ -46,15 +68,17 @@ $(document).ready(function(){
 			<textarea dir="ltr" tabindex="1" name="sumup_editor"
 				style="display: block; width: 540px; height: 130px" cols="60"
 				rows="10"><?php echo $article->News_sumup; ?></textarea>
-			<input class="button" type="submit" tabindex="1" accesskey="r"
-				value="Envoie" name="save">
-			<input class="button" type="submit" tabindex="1" accesskey="r"
-					value="Delete" name="delete">
 			<script>
 	   			 CKEDITOR.replace( 'editor' );
 	   			 CKEDITOR.replace( 'sumup_editor' );
 				</script>
+		</form> 
+		<form id="deleteForm" METHOD="POST" action="listener/deleteArticle.php">
+			<input type="hidden" name="id" value="<?php echo $id; ?>" /> 
 		</form>
+		<input class="button" type="submit" tabindex="1" accesskey="r"
+				form="updateForm" value="Envoie" name="save">
+		<input class="button" tabindex="1"  type="submit" value="Delete" name="delete">
 	</div>
 
 <?php } else {?>

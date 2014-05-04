@@ -9,6 +9,9 @@ Version    : 1.0
 Released   : 20120723
 */
 
+.dialog-hide{
+	display:none;
+}
 
 .index .marged{
 	margin-bottom : 15px;

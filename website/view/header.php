@@ -27,7 +27,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <script> UPLOADCARE_PUBLIC_KEY = '81b1193e42c48525c5a4'; </script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+<script src="../script/jquery-ui/js/jquery-1.10.2.js"></script>
 
 
 </head>
