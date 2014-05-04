@@ -10,6 +10,11 @@ Released   : 20120723
 */
 
 
+.index .marged{
+	margin-bottom : 15px;
+	margin-left : 15%;
+}
+
 .news ul li{
 	list-style-type: circle;
 	border: none !important;
@@ -63,6 +68,10 @@ h2,h3,h4 {
 
 strong {
 	color: #000000;
+}
+
+ .news img{
+	max-width: 750px;
 }
 
 img.left {
@@ -296,16 +305,17 @@ ul {
 }
 
 .index{
-	border : 1px dotted  #656565;
+	clear:both;
+	border-bottom : 1px dotted  #656565;
 	margin: 20px 10px;
 }
 
-.index h4{
-	text-align:right;
-	margin-right: 25%;
+.index em{
+	float:right;
 	color: #656565;
 	font-style:italic;
 	text-transform: none;
+	margin-right: 8%;
 }
 
 .index p{
@@ -313,6 +323,15 @@ ul {
 	margin-left: 15%;
 	color: #656565;
 	text-transform: none;
+}
+
+.index span {
+    background: none repeat scroll 0 0 #808080;
+    box-shadow: 2px 3px 4px #000000;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    padding: 4px 6px;
 }
 
 #search input.text {

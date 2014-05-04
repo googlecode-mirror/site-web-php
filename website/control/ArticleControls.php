@@ -51,6 +51,17 @@ class ArticleControls{
 		}
 	}
 	
+	public function splitTags($tags){
+		if($tags[strlen($tags)-1]==";"){
+			$tags=substr($tags, 0, -1);
+		}
+		$pieces = explode(";", $tags);
+		foreach($pieces as $piece){
+			$piece=trim($piece);
+		}
+		return $pieces;
+	}
+	
 	public function getArticle(){
 		return $this->aArticle;
 	}
