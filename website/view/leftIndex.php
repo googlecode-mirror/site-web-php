@@ -20,9 +20,9 @@
 				$list=$object->getFiveLast();
 				if($list != null){?>
 				<ul class="linkedList dateList">
-					<?php foreach($list as $article){ 
+					<?php foreach($list as $article_current){ 
 						echo '<li class="first"><span class="date">'
-							.$ret=$object->dateReducted($article->News_date).'</span><a href="news.php?art_id='.$article->News_id.'">'.$article->News_title.'</a></li>';
+							.$ret=$object->dateReducted($article_current->News_date).'</span><a href="news.php?art_id='.$article_current->News_id.'">'.$article_current->News_title.'</a></li>';
 
 						?>
 

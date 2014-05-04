@@ -19,7 +19,7 @@ class ArticleDAO{
 	}
 	public function update();*/
 	public function getById($pId){
-		try {	
+		try {
 			$resultats=$this->con->query("SELECT * from news where News_id=".$pId); // on va chercher tous les membres de la table qu'on trie par ordre croissant
 			$resultats->setFetchMode(PDO::FETCH_OBJ); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
 			$article = $resultats->fetch();

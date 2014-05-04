@@ -12,21 +12,26 @@
 <?php include "header.php";
 		$page_title="C là qu'on parle aussi bien des Pythons que des Perl"; ?>
 
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+
 <script>
 $(document).ready(function(){
-	  $(':input[name="delete"]').click(function(){
-
-	  });
+	$(':input[name="delete"]').click(function(){
+		//TODO include some awesome code here
+  	});
+	$('pre').each(function(i, e) {
+		hljs.highlightBlock(e);
 	});
+});
 </script>
- 
 		
-<?php include "leftIndex.php";
+<?php 
+	include "leftIndex.php";
 		$name = 'isAdmin';
 		if (session_status() != PHP_SESSION_NONE
 				&& (isset($_SESSION[$name]) && $_SESSION[$name] == true)) {	
 			?>
-
+	<script src="../ckeditor/ckeditor.js"></script>
 	<div class="box">
 		<h3>Poster une nouvelle news:</h3>
 		<form METHOD="POST" action="listener/updateArticle.php">
@@ -36,7 +41,7 @@ $(document).ready(function(){
 			<br /> Votre article:<br />
 			<textarea dir="ltr" tabindex="1" name="editor"
 				style="display: block; width: 540px; height: 250px" 
-				cols="60"rows="10" ><?php echo $object->readBBcode($article) ;?></textarea>
+				cols="60"rows="10" ><?php echo $article->News_content;?></textarea>
 			<br /> R&eacute;sum&eacute; :<br />
 			<textarea dir="ltr" tabindex="1" name="sumup_editor"
 				style="display: block; width: 540px; height: 130px" cols="60"
@@ -58,7 +63,7 @@ $(document).ready(function(){
 				<?php echo $article->News_title; ?>
 			</h2>
 			<div class="news">
-				<?php echo $object->readBBcode($article) ;?>
+				<?php echo $article->News_content;?>
 			</div>
 			<br />
 		</div>
