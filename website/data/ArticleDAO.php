@@ -1,8 +1,8 @@
 <?php
 
+include_once  "control/ConfigurationManager.php";
 include_once  "data/Connection.php";
 include "business/Article.php";
-require_once('log4php/Logger.php');
 
 class ArticleDAO{
 	private $con;
@@ -37,6 +37,7 @@ class ArticleDAO{
 	}
 	
 	public function getFiveMostReaded(){
+		$this->logger->debug("Exception executing request - getById");
 		$resultats=$this->con->query("SELECT max(News_id) from news"); // on va chercher tous les membres de la table qu'on trie par ordre croissant
 		$resultats->setFetchMode(PDO::FETCH_NUM); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
 		$article = $resultats->fetch();
@@ -62,6 +63,7 @@ class ArticleDAO{
 	}
 	
 	public function getFiveLast(){
+		$this->logger->debug("Executing request - getFiveLast");
 		$resultats=$this->con->query("SELECT max(News_id) from news"); // on va chercher tous les membres de la table qu'on trie par ordre croissant
 		$resultats->setFetchMode(PDO::FETCH_NUM); // on dit qu'on veut que le résultat soit récupérable sous forme d'objet
 		$article = $resultats->fetch();

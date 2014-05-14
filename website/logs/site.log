@@ -1,0 +1,6 @@
+2014-05-14T21:36:46+00:00 [ArticleDAO] test test test
+2014-05-14T21:36:46+00:00 [ArticleDAO] test test test
+2014-05-14T21:37:11+00:00 [ArticleDAO] test test test
+2014-05-14T21:37:11+00:00 [ArticleDAO] test test test
+2014-05-14T21:37:40+00:00 [ArticleDAO] Exception executing request - getFiveLast
+2014-05-14T21:37:55+00:00 [ArticleDAO] Executing request - getFiveLast

@@ -59,6 +59,7 @@ class ConfigurationManager {
 	}
 	
 	public function getLoggerConfigurationFileLocation() {
+		echo $this->getBaseDirectory().$this->resourcesProperties['relative_logger_file'];
 		return $this->getBaseDirectory().$this->resourcesProperties['relative_logger_file'];
 	}
 	
