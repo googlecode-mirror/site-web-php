@@ -4,6 +4,8 @@
 include_once  "data/ArticleDAO.php";
 include_once "data/CommentDAO.php";
 include_once "data/CategoryDAO.php";
+require_once('log4php/Logger.php');
+
 
 class ArticleControls{
 	
@@ -14,8 +16,11 @@ class ArticleControls{
 	private $aListArticle;
 	private $aListComment;
 	private $aListCategory;
+	private $logger;
+	
 	
 	public function __construct(){
+		$this->logger = Logger::getLogger(__CLASS__);
 		$this->aArticleDAO=new ArticleDAO();
 		$this->aCommentDAO=new CommentDAO();
 		$this->aCategoryDAO=new CategoryDAO();

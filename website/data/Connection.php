@@ -2,9 +2,17 @@
 
 include_once 'control/ConfigurationManager.php';
 
+
 class connection{
+	private $logger;
 	
-	function connect(){
+	
+	public function __construct() {
+		$this->logger = Logger::getLogger(__CLASS__);
+	}
+	
+	
+	public function connect(){
 		$conn=null;
 		try {
 			$conn = new PDO(ConfigurationManager::getInstance()->getDatabaseUrl()
@@ -12,7 +20,7 @@ class connection{
 					, ConfigurationManager::getInstance()->getDatabasePassword());
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		} catch(PDOException $e) {
-			echo 'ERROR: ' . $e->getMessage();
+			$this->logger->error("Cannot connect to database: ". $e->getMessage());
 		}
 		return $conn;
 	}

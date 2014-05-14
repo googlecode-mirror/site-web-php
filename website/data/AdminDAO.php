@@ -1,13 +1,17 @@
 <?php
 
 include_once  "data/Connection.php";
+require_once('log4php/Logger.php');
+
 
 class AdminDAO{
 
 	private $con;
+	private $logger;
 
 	public function __construct(){
 		$this->con=(new Connection())->connect();
+		$this->logger = Logger::getLogger(__CLASS__);
 	}
 
 	public function __destruct(){
@@ -33,7 +37,7 @@ class AdminDAO{
 			}
 			return $count==1;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - isAdmin ) -".$e->getMessage());
 			die();
 		}
 		/*SELECT COUNT( * )

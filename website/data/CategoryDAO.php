@@ -1,29 +1,21 @@
 <?php
 include_once  "data/Connection.php";
+require_once('log4php/Logger.php');
+
 
 class CategoryDAO{
 	private $con;
+	private $logger;
 
 	public function __construct(){
 		$this->con=(new Connection())->connect();
+		$this->logger = Logger::getLogger(__CLASS__);
 	}
 
 	public function __destruct(){
 		$this->con=null;
 	}
 	
-	/*public function getByName($name){
-		try {
-			$stmt = $this->con->prepare("Select * from category where category_name= :category_name)");
-			$stmt->bindParam(':category_name', $name);
-			$return=$stmt->execute();
-			return $return;
-		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
-			die();
-		}
-		
-	}*/
 	public function getByName($titre){
 		try {
 			$resultats=$this->con->query("SELECT * from category where category_name ='".$titre."'"); // on va chercher tous les membres de la table 
@@ -33,7 +25,7 @@ class CategoryDAO{
 			$resultats->closeCursor();
 			return $category;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - getByName(".$titre.") -".$e->getMessage());
 			die();
 		}
 	}
@@ -49,7 +41,7 @@ class CategoryDAO{
 			$categoryId = $category['category_id'];
 			return $categoryId;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - getIdForName(".$titre.") -".$e->getMessage());
 			die();
 		}
 	}
@@ -73,7 +65,7 @@ class CategoryDAO{
 			//$resultats->closeCursor();
 			//return $allCat;
 			} catch (PDOException $e) {
-				print "Error!: " . $e->getMessage() . "<br/>";
+				$this->logger->severe("Exception executing request - getAllFetchArray -".$e->getMessage());
 				die();
 			}
 		

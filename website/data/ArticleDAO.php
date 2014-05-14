@@ -2,12 +2,16 @@
 
 include_once  "data/Connection.php";
 include "business/Article.php";
+require_once('log4php/Logger.php');
 
 class ArticleDAO{
 	private $con;
+	private $logger;
+	
 
 	public function __construct(){
 		$this->con=(new Connection())->connect();
+		$this->logger = Logger::getLogger(__CLASS__);
 	}
 	
 	public function __destruct(){
@@ -26,7 +30,7 @@ class ArticleDAO{
 			$resultats->closeCursor();
 			return $article;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - getById(".$pId.") -".$e->getMessage());
 			die();
 		}
 		
@@ -52,7 +56,7 @@ class ArticleDAO{
 			$resultats->closeCursor();
 			return $listArticle;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - getFiveMostReaded -".$e->getMessage());
 			die();
 		}
 	}
@@ -77,7 +81,7 @@ class ArticleDAO{
 			$resultats->closeCursor();
 			return $listArticle;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - getFiveLast -".$e->getMessage());
 			die();
 		}
 	}
@@ -95,7 +99,7 @@ class ArticleDAO{
 			$resultats->closeCursor();
 			return @ $listArticle;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - getFavorites -".$e->getMessage());
 			die();
 		}
 	}
@@ -117,7 +121,7 @@ class ArticleDAO{
 			return @ $listArticle;
 				
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - getBySearch(".$htmlSearch.") -".$e->getMessage());
 			die();
 		}
 		
@@ -136,7 +140,7 @@ class ArticleDAO{
 			$resultats->closeCursor();
 			return @ $listArticle;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - getByCategory(".$pId.") -".$e->getMessage());
 			die();
 		}
 	
@@ -167,13 +171,11 @@ class ArticleDAO{
 			$stmt->bindParam(':new_tags', $tags);
 			$stmt->bindParam(':new_title',$title);
 			$stmt->bindParam(':new_sumup', $sumup);
-			
-			var_dump($stmt);
-				
+
 			$return=$stmt->execute();
 			return $return;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - update(".$article.") -".$e->getMessage());
 			die();
 		}
 	}
@@ -184,7 +186,7 @@ class ArticleDAO{
 			$resultats=$this->con->exec("Delete from news where News_id=".$pId);
 			return $resultats;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - delete(".$pId.") -".$e->getMessage());
 			die();
 		}
 	}
@@ -217,7 +219,7 @@ class ArticleDAO{
  			$return=$stmt->execute();
 			return $return;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - addNewArticle -".$e->getMessage());
 			die();
 		}
 	}

@@ -2,12 +2,17 @@
 
 include_once  "data/Connection.php";
 include "business/Comment.php";
+include_once 'control/ConfigurationManager.php';
+require_once('log4php/Logger.php');
+
 
 class CommentDAO {
 	private $con;
+	private $logger;
 	
 	public function __construct(){
 		$this->con=(new Connection())->connect();
+		$this->logger = Logger::getLogger(__CLASS__);
 	}
 	
 	public function __destruct(){
@@ -33,7 +38,7 @@ class CommentDAO {
 			}else return false;
 				
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - getAllUnvalid -".$e->getMessage());
 			die();
 		}
 	
@@ -43,7 +48,7 @@ class CommentDAO {
 		try {
 			$resultats=$this->con->exec("delete from comment where comment_isValid=0 "); // on va chercher tous les membres de la table qu'on trie par ordre croissant
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - removeAllUnvalid -".$e->getMessage());
 			die();
 		}
 	
@@ -70,7 +75,7 @@ class CommentDAO {
 			}else return false;
 			
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - getByNews(".$pId.") -".$e->getMessage());
 			die();
 		}
 	
@@ -81,7 +86,7 @@ class CommentDAO {
 			$resultats=$this->con->exec("Delete from news where News_id=".$pId);
 			return $resultats;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - delete(".$pId.") -".$e->getMessage());
 			die();
 		}
 	}
@@ -91,7 +96,7 @@ class CommentDAO {
 			$resultats=$this->con->exec("UPDATE comment SET comment_isValid = '1' WHERE comment_id =".$pId);
 			return $resultats;
 		} catch (PDOException $e) {
-			print "Error!: " . $e->getMessage() . "<br/>";
+			$this->logger->severe("Exception executing request - validComments(".$pId.") -".$e->getMessage());
 			die();
 		}
 	}
@@ -115,7 +120,7 @@ class CommentDAO {
 			$return=$stmt->execute();
 			return $return;
 			} catch (PDOException $e) {
-				print "Error!: " . $e->getMessage() . "<br/>";
+				$this->logger->severe("Exception executing request - addNewComment -".$e->getMessage());
 				die();
 			}
 	}
